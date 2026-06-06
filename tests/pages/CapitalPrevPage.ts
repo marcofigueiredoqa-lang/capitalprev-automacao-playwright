@@ -18,6 +18,11 @@ export class CapitalPrevPage {
   readonly campoInstituidor:      Locator;
   readonly opcaoCapitalprev:      Locator;
   readonly tituloEnderecoTitular: Locator;  
+  readonly calendario:            Locator;
+  readonly calendarioAnterior:    Locator;
+  readonly mes:                   Locator;
+  readonly ano:                   Locator;
+  readonly dia:                   Locator;
 
   constructor(page: Page) {
   
@@ -37,7 +42,11 @@ export class CapitalPrevPage {
     this.campoInstituidor       = page.locator('#root > div > div > div > main > div > div:nth-child(3) > div > form > div:nth-child(4) > div:nth-child(6) > div > button > div.itc-button-content.drop-shadow-md.flex.flex-1.justify-start');
     this.opcaoCapitalprev       = page.getByText('CAPITALPREV', { exact: true }).last();
     this.tituloEnderecoTitular  = page.getByText('Endereço do titular do plano', { exact: true });
-
+    this.calendario             = page.locator('#root > div > div > div > main > div > div:nth-child(3) > div > form > div:nth-child(1) > div:nth-child(3) > div > div > div.flex.items-center.shrink-0 > button')
+    this.calendarioAnterior     = page.locator('#radix-_r_qu_ > div > div > nav > button.itc-button.inline-flex.items-center.justify-center.text-sm.font-medium.space-x-3.rounded.hover\:cursor-pointer.disabled\:pointer-events-none.disabled\:opacity-50.text-\(--button-ghost-foreground\).border-0.transition-all.hover\:text-\(--button-ghost-hover\).active\:text-\(--button-ghost-active\).min-w-fit.absolute.left-0.h-7.w-7.bg-transparent.p-0.opacity-80.hover\:opacity-100')
+    this.mes                    = page.locator('#radix-_r_0_ > div > div > div > div')
+    this.ano                    = page.locator('#radix-_r_qu_ > div > div > div > div.grid.grid-cols-4.gap-y-2.mx-auto.mt-4 > button:nth-child(1)')
+    this.dia                    = page.locator('#radix-_r_qu_ > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(3) > button')
     ;
   }
 
@@ -52,11 +61,33 @@ export class CapitalPrevPage {
   async preencherCPF() {
     const cpf = gerarCPFValido();
     await this.campoCPF.fill(cpf);
-    console.log(`CPF usado no teste: ${cpf}`);
+  }
+
+  async preencherCPFInvalido() {
+    await this.campoCPF.fill('05457855555');
+  }
+  async preencherCPFInvalido2() {
+    await this.campoCPF.fill('555');
   }
 
   async preencherDataNasc() {
     await this.campoDataNasc.fill('05/10/2001');
+  }
+
+  async preencherDataNascFutura() {
+    await this.campoDataNasc.fill('05/10/2097');
+  }
+
+  async preencherDataNascInexistente() {
+    await this.campoDataNasc.fill('57/57/5757');
+  }
+
+  async preencherDataNascManual() {
+    await this.calendario.click();
+    await this.mes.click();
+    await this.calendarioAnterior.click();
+    await this.ano.click();
+    await this.dia.click();
   }
 
 async selecionarMasculino() {
