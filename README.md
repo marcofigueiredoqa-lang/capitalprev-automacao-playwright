@@ -1,4 +1,4 @@
-# 🤖 CapitalPrev — Automação de Testes com Playwright
+# CapitalPrev — Automação de Testes com Playwright
 
 ![Playwright](https://img.shields.io/badge/Playwright-TypeScript-blue?logo=playwright)
 ![Status](https://img.shields.io/badge/Status-Em%20desenvolvimento-yellow)
