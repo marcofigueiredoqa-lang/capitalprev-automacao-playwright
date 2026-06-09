@@ -34,8 +34,11 @@ export class CapitalPrevPage2 {
   }
 
   async preencherCEPInvalido() {
+    await this.campoCEP.fill('35654444');
+  }  
+  async preencherCEPIncompleto() {
     await this.campoCEP.fill('000000');
-  }
+  } 
 
   async consultarCEP() {
     await this.botaoConsultarCEP.click();

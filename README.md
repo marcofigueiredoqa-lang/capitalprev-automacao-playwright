@@ -60,12 +60,14 @@ CAPITALPREV-AUTOMACAO-PLAYWRIGHT/
 │   │   ├── CapitalPrevPage.ts      # Passo 01 - Informações Pessoais
 │   │   ├── CapitalPrevPage2.ts     # Passo 02 - Endereço
 │   │   ├── CapitalPrevPage3.ts     # Passo 03 - Contribuição
-│   │   └── CapitalPrevPage4.ts     # Passo 04 - Simulação
+│   │   ├── CapitalPrevPage4.ts     # Passo 04 - Simulação
+│   │   └── CapitalPrevPage5.ts     # Passo 05 - Etapa de Segurança
 │   ├── CapitalPrev-FluxoCompleto.spec.ts
 │   ├── CapitalPrev-Passo01.spec.ts
 │   ├── CapitalPrev-Passo02.spec.ts
 │   ├── CapitalPrev-Passo03.spec.ts
-│   └── CapitalPrev-Passo04.spec.ts
+│   ├── CapitalPrev-Passo04.spec.ts
+│   └── CapitalPrev-Passo05.spec.ts
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
@@ -162,8 +164,13 @@ npx allure open allure-report
 | 01 | Exibir resumo da simulação | Positivo |
 | 02 | Navegar entre períodos do gráfico | Positivo |
 
+### Passo 05 — Segurança
+| # | Cenário | Tipo |
+|---|---------|------|
+| 01 | Token inválido | Negativo |
 
-**Total: 16 cenários automatizados**
+
+**Total: 19 cenários automatizados**
 
 ---
 

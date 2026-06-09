@@ -43,11 +43,10 @@ export class CapitalPrevPage {
     this.opcaoCapitalprev       = page.getByText('CAPITALPREV', { exact: true }).last();
     this.tituloEnderecoTitular  = page.getByText('Endereço do titular do plano', { exact: true });
     this.calendario             = page.locator('#root > div > div > div > main > div > div:nth-child(3) > div > form > div:nth-child(1) > div:nth-child(3) > div > div > div.flex.items-center.shrink-0 > button')
-    this.calendarioAnterior     = page.locator('#radix-_r_qu_ > div > div > nav > button.itc-button.inline-flex.items-center.justify-center.text-sm.font-medium.space-x-3.rounded.hover\:cursor-pointer.disabled\:pointer-events-none.disabled\:opacity-50.text-\(--button-ghost-foreground\).border-0.transition-all.hover\:text-\(--button-ghost-hover\).active\:text-\(--button-ghost-active\).min-w-fit.absolute.left-0.h-7.w-7.bg-transparent.p-0.opacity-80.hover\:opacity-100')
+    this.calendarioAnterior     = page.getByRole('button', { name: 'Go to the previous 12 years'});
     this.mes                    = page.locator('#radix-_r_0_ > div > div > div > div')
-    this.ano                    = page.locator('#radix-_r_qu_ > div > div > div > div.grid.grid-cols-4.gap-y-2.mx-auto.mt-4 > button:nth-child(1)')
-    this.dia                    = page.locator('#radix-_r_qu_ > div > div > div > table > tbody > tr:nth-child(3) > td:nth-child(3) > button')
-    ;
+    this.ano                    = page.locator('[role="grid"]').getByRole('button', { name: '2001', exact: true })
+    this.dia                    = page.getByRole('button', {name: 'sexta-feira, 5 de janeiro de 2001'})
   }
 
 
@@ -85,6 +84,7 @@ export class CapitalPrevPage {
   async preencherDataNascManual() {
     await this.calendario.click();
     await this.mes.click();
+    await this.calendarioAnterior.click();
     await this.calendarioAnterior.click();
     await this.ano.click();
     await this.dia.click();

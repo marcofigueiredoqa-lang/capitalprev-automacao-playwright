@@ -13,7 +13,17 @@ test('Endereço - Validar campos obrigatórios', async ({ page }) => {
   
   });  
 
-test('Endereço - Bloquear CEP inválido', async ({ page }) => {
+test('Endereço - CEP com formato incompleto', async ({ page }) => {
+    const passo01 = new CapitalPrevPage(page);
+    const passo02 = new CapitalPrevPage2(page);
+    await passo01.abrirPagina();
+    await passo01.preencherPasso01Completo();
+    await passo02.preencherCEPIncompleto();
+    await passo02.consultarCEP();
+    await expect(page.getByText('CEP Inválido')).toHaveCount(1);
+  });
+
+  test('Endereço - CEP inválido deve exibir mensagem de erro', async ({ page }) => {
     const passo01 = new CapitalPrevPage(page);
     const passo02 = new CapitalPrevPage2(page);
     await passo01.abrirPagina();
