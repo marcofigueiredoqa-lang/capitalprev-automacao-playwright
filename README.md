@@ -31,6 +31,7 @@ Este projeto automatiza o fluxo de **Adesão** do portal CapitalPrev, cobrindo o
 | Passo 02 | Endereço do Titular do Plano |
 | Passo 03 | Contribuição e Dados Bancários |
 | Passo 04 | Simulação e Confirmação |
+| Passo 05 | Etapa de Segurança |
 
 O objetivo é garantir a qualidade do fluxo de adesão, validando tanto o **caminho feliz** quanto os **cenários de erro**, como campos obrigatórios, CPF inválido, CEP inválido e datas incorretas.
 
